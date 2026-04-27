@@ -11,7 +11,7 @@ type Task struct {
 	CompletedAT *time.Time
 }
 
-func NewRask(title string, description string) Task {
+func NewTask(title string, description string) Task {
 	return Task{
 		Title:       title,
 		Description: description,

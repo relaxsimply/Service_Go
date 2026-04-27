@@ -1,32 +1,31 @@
 package http
 
-import(
-	"errrors"
+import (
+	"errors"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 type HTTPServer struct {
-	httpHandlers : *HTTPHandlers
+	httpHandlers *HTTPHandlers
 }
 
 func NewHTTPServer(httpHandlers *HTTPHandlers) *HTTPServer {
-	return  &HTTPServer {
+	return &HTTPServer{
 		httpHandlers: httpHandlers,
 	}
 }
 
-
-func (s *HTTPServer) StartServer() error{
+func (s *HTTPServer) StartServer() error {
 	router := mux.NewRouter()
 
-	router.Path("/tasks").Methods("POST").HandleFunc(s.httpHandlers.HandleCreateTask)
+	router.Path("/tasks").Methods("POST").HandlerFunc(s.httpHandlers.HandleCreateTask)
 	router.Path("/tasks/{title}").Methods("GET").HandlerFunc(s.httpHandlers.HandleGetTask)
 	router.Path("/tasks").Methods("GET").Queries("completed", "true").HandlerFunc(s.httpHandlers.HandleGetAllUncompletedTasks)
 	router.Path("/tasks").Methods("GET").HandlerFunc(s.httpHandlers.HandleGetAllTasks)
 
-	router.Path("/tasks/{title}").Methods("PATCH").HandlerFunc(s.httpHandlers.HandleCompleteTasks)
+	router.Path("/tasks/{title}").Methods("PATCH").HandlerFunc(s.httpHandlers.HandleCompleteTask)
 	router.Path("/tasks/{title}").Methods("DELETE").HandlerFunc(s.httpHandlers.HandleDeleteTask)
 
 	if err := http.ListenAndServe(":8080", router); err != nil {
@@ -35,6 +34,5 @@ func (s *HTTPServer) StartServer() error{
 		}
 	}
 	return nil
-
 
 }

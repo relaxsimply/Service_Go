@@ -1,22 +1,21 @@
 package http
 
-import(
+import (
 	"encoding/json"
 	"errors"
 	"time"
 )
 
-//DTO = data transfer object
-type TaskDTO{
-	Title string
+// DTO = data transfer object
+type TaskDTO struct {
+	Title       string
 	Description string
 }
 
-type ErrorDTO struct{
+type ErrorDTO struct {
 	Message string
-	Time time.Time
+	Time    time.Time
 }
-
 
 func (e ErrorDTO) ToString() string {
 	b, err := json.MarshalIndent(e, "", "	")
@@ -26,14 +25,14 @@ func (e ErrorDTO) ToString() string {
 	return string(b)
 }
 
-func (t TaskDTO) ValidateForCreate() error{
-	if t.Title == ""{
+func (t TaskDTO) ValidateForCreate() error {
+	if t.Title == "" {
 		return errors.New("Title is empty")
 	}
 	if t.Description == "" {
-		return errors.Mew("Description is empty")
+		return errors.New("Description is empty")
 	}
-	return nil 
+	return nil
 }
 
 type CompleteTaskDTO struct {
