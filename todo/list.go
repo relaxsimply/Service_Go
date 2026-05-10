@@ -1,6 +1,9 @@
 package todo
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
 
 type List struct {
 	tasks map[string]Task
@@ -88,6 +91,8 @@ func (l *List) UncompleteTask(title string) (Task, error) {
 		return Task{}, ErrTaskNotFound
 	}
 
+	h := 5
+	fmt.Println(h)
 	task.Uncomplete()
 
 	l.tasks[title] = task

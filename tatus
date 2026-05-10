@@ -1,0 +1,23 @@
+[33mcommit 937d4337ac1e4590539ff27565c1da831842761b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/my-change[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/feature/app=entrypoint[m[33m, [m[1;32mfeature/app=entrypoint[m[33m)[m
+Author: AndreyK <kotovandrej071@gmail.com>
+Date:   Mon Apr 27 15:45:14 2026 +0300
+
+    feat: add application etrypoint (main.go)
+
+[33mcommit 2291fdf74cccc28dea94a4970838bac5265b4d1b[m[33m ([m[1;31morigin/feature/todo-http[m[33m, [m[1;32mfeature/todo-http[m[33m)[m
+Author: AndreyK <kotovandrej071@gmail.com>
+Date:   Mon Apr 27 15:36:16 2026 +0300
+
+    feat: implemet http server layer
+
+[33mcommit cd16289cd31a1e8fd292b8a2e3545920e53f82c7[m[33m ([m[1;31morigin/feature/todo-domain[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mfeature/todo-domain[m[33m)[m
+Author: AndreyK <kotovandrej071@gmail.com>
+Date:   Mon Apr 27 13:55:34 2026 +0300
+
+    feat: implement todo business logic
+
+[33mcommit 35f6b5b3248ba18c3f4769b960588fb72e69c0b7[m
+Author: AndreyK <kotovandrej071@gmail.com>
+Date:   Mon Apr 27 12:44:19 2026 +0300
+
+    Initial commit
