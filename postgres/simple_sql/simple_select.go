@@ -7,7 +7,7 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-func SelectRoes(ctx context.Context, conn *pgx.Conn) error {
+func SelectRows(ctx context.Context, conn *pgx.Conn) ([]TaskModel, error) {
 	sqlQuery := `
 	SELECT id, title, description, completed, created_at, completed_at
 	FROM tasks
@@ -17,7 +17,7 @@ func SelectRoes(ctx context.Context, conn *pgx.Conn) error {
 	rows, err := conn.Query(ctx, sqlQuery)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 	defer rows.Close()
 
@@ -36,15 +36,17 @@ func SelectRoes(ctx context.Context, conn *pgx.Conn) error {
 		)
 
 		if err != nil {
-			return err
+			return nil, err
 		}
+
+		tasks = append(tasks, task)
 
 		// fmt.Println(id, title, description, completed, createdAt, completedAt)
 		// printTask(id, title, description, completed, createdAt, completedAt)
 
 	}
 
-	return nil
+	return tasks, nil
 }
 
 func printTask(task TaskModel) {
